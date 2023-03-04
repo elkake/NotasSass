@@ -1,0 +1,42 @@
+.btn-group{
+    display: flex;
+}
+
+.btn {
+    font-size: 1.2em;
+    background: dodgerblue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    // &+& ; segundo boton
+    &+& {
+      margin-left: 15px;
+      background: firebrick;
+    }
+    // llamamos al padre de .btn e indicamos con las &, desde que hijo se aplicaran los estilos, &´+& , desde el segundo hijo en adelante
+    .btn-group & + &{
+      background: yellow
+    }
+    
+  }
+//   marcamos 2 elementos a editar
+// pero ol esta incluido dentro de ul
+  ul, li {
+    // se aplican estos estilo a los 2 elementos
+    padding: 0;
+    text-align: right;
+    color: white;
+    list-style: none;
+    width: 300px;
+    background: green;
+    // usamos 2 & para estilar solo OL
+    & &{
+        width:200px;
+        border: 1px solid yellow;
+        background: red;
+      padding: {
+        bottom: 0px;
+        left: 0px;
+      }
+    }
+  }

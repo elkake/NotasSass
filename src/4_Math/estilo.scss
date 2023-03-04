@@ -1,0 +1,17 @@
+
+
+@use "sass:math";
+
+.container{
+    display: flex;
+    article[role="main"]{
+        width: math.div(50px, 200px) * 100%; //(50x100/200) % = 25%
+        color: orange;
+    }
+    aside[role="complementary"]{
+      width: math.div(3px, 10px) * 100%; // (3x100/10)%= 30%
+      margin-left: auto;
+      color: white;
+    }
+}
+

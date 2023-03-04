@@ -1,0 +1,114 @@
+@use "sass:map";
+// Variables : las variables se crean con el simbolo dolar
+$color:red;
+// variables privadas, usualmente se usa con _partials> y no se pueden llamar directamente
+$-color:green;
+
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+// LISTA
+$icons:
+  "eye" "\f112" 12px,
+  "start" "\f12e" 16px,
+  "stop" "\f12f" 10px;
+
+  // OBJETO
+  $icons: (
+    "eye": "\f112",
+    "start": "\f12e", 
+    "stop": "\f12f"
+    );
+    
+// ARRAY
+  $sizes: 40px, 50px, 80px;
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+
+
+.variable1{
+    color:$color;
+    border: 1px solid $color;
+}
+
+// varibale cambiada de manera local, no afecta a las demas lineas
+.variable3{
+    $color:green;
+    color:$color;
+    border: 1px solid $color;
+}
+
+// la variable se cambia despues de esta linea
+$color:yellow;
+.variable2{
+    color:$color;
+    border: 1px solid $color;
+}
+
+// condicionar una variable o mas
+// conn el false o el true podemos manejar el cambio de estilos
+$dark-theme: true !default;
+$primary-color: #f8bbd0 !default;
+$accent-color: #6a1b9a !default;
+
+// if, condicional de dark theme si es true
+@if $dark-theme {
+    // darken significa, cuanto de negro, 60%
+    $primary-color: darken($primary-color, 60%);
+    //lighten significa, cuanto de blanco, 30%
+  $accent-color: lighten($accent-color, 30%);
+}
+
+.button1 {
+  background-color: $primary-color;
+  border: 1px solid $accent-color;
+  border-radius: 3px;
+  
+}
+
+// map, funciona como el map de js, para recorrer un arrray, pero invoca la key del estilo
+// @use "sass:map"
+
+// objeto con 3 key que entregan el mismo tipo de dato;
+$color:(
+    "success":green,
+    "info":yellow,
+        "warning":red,
+);
+
+.estado1{
+    color:map.get($color,"info")
+}
+
+.estado2{
+    color:map.get($color,"warning")
+}
+
+//VARIABLE DE INTERPOLACION #{ }
+// EJEMPLO EN MIXION
+// La interpolacion es util para insertar valores en cadenas
+
+// UNIQUE-ID: genera un id automatico
+
+@mixin inline-animation($duration) {
+    // genera un nombre unico
+    $name: inline-#{unique-id()};
+    animation: $name $duration infinite ease-in;
+  
+    @keyframes #{$name} {
+        // content recibe lo que se ponga dentro del mixin, en este caso from y to
+        @content
+    }
+  }
+  
+  .pulse {
+    width: 200px;
+    height: 200px;
+    @include inline-animation(5s) {
+    // @content
+      from { background-color: yellow }
+      to { background-color: red }
+    }
+  }
+
+//   QUITARLE COMILLAS A UNA CADEA
+// string.unquote($string)

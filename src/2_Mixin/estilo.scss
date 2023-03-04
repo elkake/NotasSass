@@ -1,0 +1,36 @@
+@use '../base';
+
+// Mixin es como una funcion donde guardamos datos que se repiten
+// $theme es un parametro
+@mixin theme($bgColor:Orange){
+    background-color: $bgColor;
+    box-shadow: 0 0 1px black;
+    color:#fff;
+    width: base.$width;
+    height: base.$height;
+}
+
+// se llama el mixiin con include
+.mixin1{
+    @include theme
+}
+.mixin2{
+@include theme($bgColor: Red)
+}
+.mixin3{
+@include theme($bgColor:green)
+}
+
+// MIXIN CON INTERPOLACION
+// Interpolacion:agregar una varibale dentro del nombre de estado: #{algo}
+@mixin define-emoji($name, $glyph) {
+    .emoji-#{$name}::before {
+        content: $glyph;
+      font-family: sans-serif;
+      color: $glyph;
+      content:$name
+    }
+  }
+  
+  @include define-emoji("women", white);
+  @include define-emoji("man", yellow);

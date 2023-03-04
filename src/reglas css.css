@@ -1,0 +1,42 @@
+ /* Estado de la IU */
+
+/* Pseudoclases que se basan en el estado de la IU */
+
+:active
+/* Coincide con un elemento que se está activando actualmente. Por lo general, esto significa que el botón del mouse se ha presionado para botones y enlaces, pero aún no se ha lanzado. */
+
+:checked
+/* Coincide con botón, casilla de verificación, u opción dentro de un elemento selecto que está marcado o seleccionado. */
+
+:focus
+/* Coincide con un elemento que actualmente tiene el foco, típicamente utilizado para botones y campos de texto. */
+
+:hover
+/* Coincide con un elemento donde el cursor está flotando actualmente. */
+
+/* Estado del documento */
+
+/* pseudoclases que se basan en la posición de un elemento en el documento */
+
+:first-child, :last-child
+/* Coincide con un elemento que es el primer o último hijo de su padre. */
+
+/* root */
+/* Coincide con el elemento raíz del documento, este es nuestro elemento HTML habitual.  */
+
+:nth-child(even)
+
+/* Marca a los hijos pares */
+
+:nth-child(odd)
+
+/* Marca a los hijos impares */
+
+:nth-child(2n+1)
+
+/* an +b 
+ a> es el numero entrero que multiplica n
+ n> es la posicion de cada item hermano hijo
+ b> es un numero que se suma
+ejemplo 2n+1 >> 2(0)+1 , 2(1)+1, 2(2)+1,etc
+*/

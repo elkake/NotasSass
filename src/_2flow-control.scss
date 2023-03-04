@@ -1,0 +1,128 @@
+// una condicional nomal IF-ELSE
+@mixin avatar($size, $circle: false) {
+    width: $size;
+    height: $size;
+  
+    // si circulo es true>>> border radies :--
+    @if $circle {
+      border-radius: $size / 2;
+    } @else {
+      background-color: $dark-background;
+      color: $dark-text;
+    }
+  }
+  
+  .square-av {
+    @include avatar(100px, $circle: false);
+  }
+  .circle-av {
+    @include avatar(100px, $circle: true);
+  }
+
+
+  // --------------------------------------
+
+  @mixin triangle($size, $color, $direction) {
+    height: 0;
+    width: 0;
+  
+    border-color: transparent;
+    border-style: solid;
+    border-width: math.div($size, 2);
+  
+    @if $direction == up {
+      border-bottom-color: $color;
+    } @else if $direction == right {
+      border-left-color: $color;
+    } @else if $direction == down {
+      border-top-color: $color;
+    } @else if $direction == left {
+      border-right-color: $color;
+    } @else {
+      @error "Unknown direction #{$direction}.";
+    }
+  }
+  
+  .next {
+    @include triangle(5px, black, right);
+  }
+
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+// @each : PARECICO A UN FOR OF o DESESTRUCTURACION
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+
+$sizes: 40px, 50px, 80px;
+
+@each $size in $sizes {
+  .icon-#{$size} {
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+}
+
+// es representacion de esto:
+// .icon-40px {
+//   font-size: 40px;
+//   height: 40px;
+//   width: 40px;
+// }
+
+// .icon-50px {
+//   font-size: 50px;
+//   height: 50px;
+//   width: 50px;
+// }
+
+// .icon-80px {
+//   font-size: 80px;
+//   height: 80px;
+//   width: 80px;
+// }
+
+$icons: ("eye": "\f112", "start": "\f12e", "stop": "\f12f");
+
+@each $name, $glyph in $icons {
+  .icon-#{$name}:before {
+    display: inline-block;
+    font-family: "Icon Font";
+    content: $glyph;
+  }
+}
+
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+// @FOR : NECESITA 2 VALORES
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+
+
+@for $i from 1 through 3 {
+  ul:nth-child(3n + #{$i}) {
+    // ESTA ACLARANDO EL BASE COLOR CON .25  DE LUZ
+    background-color: lighten($base-color, $i * 25%);
+  }
+}
+
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+// @WHILE : 
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+
+@use "sass:math";
+
+/// Divides `$value` by `$ratio` until it's below `$base`.
+@function scale-below($value, $base, $ratio: 1.618) {
+  @while $value > $base {
+    $value: math.div($value, $ratio);
+  }
+  @return $value;
+}
+
+$normal-font-size: 16px;
+sup {
+  font-size: scale-below(20px, 16px);
+}

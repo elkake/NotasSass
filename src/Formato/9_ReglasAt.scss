@@ -1,0 +1,134 @@
+// import un formato en css se hace de esta forma
+
+@namespace svg url(http://www.w3.org/2000/svg);
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+}
+@counter-style thumbs {
+  system: cyclic;
+  symbols: "\1F44D";
+}
+
+// pero sass admite tamgbine el namespace
+@namespace svg url(http://www.w3.org/2000/svg);
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+}
+
+@counter-style thumbs {
+  system: cyclic;
+  symbols: "\1F44D";
+}
+
+// -------------------------------------------------------
+// -------------------------------------------------------
+// @MEDIA
+// -------------------------------------------------------
+// -------------------------------------------------------
+// SASS
+.print-only {
+    display: none;
+  
+    @media print { display: block; }
+  }
+  
+// CSS
+
+.print-only {
+    display: none;
+  }
+@media print {
+    .print-only {
+      display: block;
+    }
+}
+
+
+//SASSS
+$layout-breakpoint-small: 960px;
+
+@media (min-width: $layout-breakpoint-small) {
+  .hide-extra-small {
+    display: none;
+  }
+}
+
+
+// SASS
+
+@media (hover: hover) {
+    .button:hover {
+      border: 2px solid black;
+  
+      @media (color) {
+        border-color: #036;
+      }
+    }
+  }
+
+//   CSS
+
+@media (hover: hover) {
+    .button:hover {
+      border: 2px solid black;
+    }
+  }
+  @media (hover: hover) and (color) {
+    .button:hover {
+      border-color: #036;
+    }
+  }
+
+
+// -------------------------------------------------------
+// -------------------------------------------------------
+// @SUPPORTS
+// -------------------------------------------------------
+// -------------------------------------------------------
+
+  @mixin sticky-position {
+    position: fixed;
+    @supports (position: sticky) {
+      position: sticky;
+    }
+  }
+  
+  .banner {
+    @include sticky-position;
+  }
+
+//   CSS
+.banner {
+    position: fixed;
+  }
+  @supports (position: sticky) {
+    .banner {
+      position: sticky;
+    }
+  }
+
+  // -------------------------------------------------------
+// -------------------------------------------------------
+// @KEYFRAMES
+// -------------------------------------------------------
+// -------------------------------------------------------
+// debe usar from to
+@keyframes slide-in {
+    from {
+      margin-left: 100%;
+      width: 300%;
+    }
+  
+    70% {
+      margin-left: 90%;
+      width: 150%;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }

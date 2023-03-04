@@ -1,0 +1,27 @@
+// _base.scss
+// VARIABLES EDITABLES
+// para poder llamar variables que puedan ser editadas se usa el !default
+// black puede ser llamado y reemplazado en el documento donde se llame
+$black:#000 !default;
+
+// editando en el documento
+// style.scss
+// @use 'library' with (
+//   $black: #222,
+//   $border-radius: 0.1rem
+// );
+
+// varibles publicas
+$font:  sans-serif;
+$color: #f33;
+$width:500px;
+$height:100px;
+
+// variables privadas
+// radius es una variable privada que no puede ser llamada por ningun documento.
+$-radius: 53px;
+
+// funciones mixion publicas
+@mixin rounded {
+  border-radius: $-radius;
+}

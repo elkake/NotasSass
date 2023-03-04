@@ -1,0 +1,25 @@
+// La diferencia de un Extends con un Mixin, es que al mixin se le pueden cambiar datos, en cambio el Extends, son datos ya predeterminados por el usuario.
+// %var a importar y @extend para llamarlos
+
+%estilos{
+    border: 1px solid #ccc;
+  padding: 10px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message1{
+    @extend %estilos;
+}
+
+.message2{
+    @extend %estilos;
+    border-color: #f53
+}
+
+.message3{
+    @extend %estilos;
+    border-color: #f0f
+}

@@ -1,0 +1,20 @@
+//estilo.scss
+// llamada del partial "_base" a traves de @use
+@use '../base';
+// se le puede asignar un nombre al import como en width
+@use '../base' as C;
+// se puede importar todo y usar directamente las variables y funciones, como con height.
+@use '../base' as *;
+// el partial es un objeto
+.partial{
+    // las variables se llamar con $
+    background-color: base.$color;
+    display: flex;
+    font-family: base.$font;
+    width: C.$width;
+    height: $height;
+    align-items: center;
+    justify-content: center;
+    // los mixion se llaman directamente o como un objeto C.rounded
+    @include base.rounded;
+}

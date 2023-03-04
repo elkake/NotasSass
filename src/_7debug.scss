@@ -1,0 +1,13 @@
+// mostrar un mensaje de la variable que quieres y su pagina
+
+@mixin inset-divider-offset($offset, $padding) {
+    $divider-offset: (2 * $padding) + $offset;
+    @debug "divider offset: #{$divider-offset}";
+  
+    margin-left: $divider-offset;
+    width: calc(100% - #{$divider-offset});
+  }
+
+//   respuesta
+
+// test.scss:3 Debug: divider offset: 132px

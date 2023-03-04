@@ -1,0 +1,13 @@
+// <div class="error error--serious">
+//   Oh no! You've been hacked!
+// </div>
+
+.error {
+    border: 1px #f00;
+    background-color: #fdd;
+  
+    &--serious {
+      @extend .error;
+      border-width: 3px;
+    }
+  }
